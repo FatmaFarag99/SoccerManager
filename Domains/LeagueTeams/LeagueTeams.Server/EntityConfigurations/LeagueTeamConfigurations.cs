@@ -5,5 +5,11 @@ public class LeagueTeamConfigurations : BaseEntityConfiguration<LeagueTeam>
     {
         base.Configure(builder);
         builder.Property(e => e.Name).IsRequired();
+        builder.Property(e => e.NickName).IsRequired();
+        builder.Property(e => e.LeagueName).IsRequired();
+        builder.Property(e => e.Founded).IsRequired();
+        builder.Property(e => e.President).IsRequired();
+        builder.Property(e => e.HomeStadium).IsRequired();
+        builder.Property(e => e.Capacity).IsRequired();
     }
 }
