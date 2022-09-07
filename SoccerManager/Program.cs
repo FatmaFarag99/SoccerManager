@@ -2,6 +2,7 @@ using Coaches.Server;
 using Common.AssemplyScanning;
 using LeagueTeams.Server;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Nationalities.Server;
@@ -16,6 +17,7 @@ ConfigurationManager configuration = builder.Configuration;
 var connectionString = configuration.GetConnectionString("DefaultConnection");
 
 
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options
@@ -24,6 +26,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         .EnableSensitiveDataLogging()
         .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
+
+// For Identity
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<DbContext, ApplicationDbContext>();
 
