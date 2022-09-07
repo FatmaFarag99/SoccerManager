@@ -1,4 +1,6 @@
 namespace NationalTeams.Server;
+using Coaches.Server;
+
 public class NationalTeamConfigurations : BaseEntityConfiguration<NationalTeam>
 {
     public override void Configure(EntityTypeBuilder<NationalTeam> builder)
@@ -11,7 +13,7 @@ public class NationalTeamConfigurations : BaseEntityConfiguration<NationalTeam>
         builder.Property(e => e.Association).IsRequired();
 
         builder.HasMany(e => e.Players).WithOne().HasForeignKey(e => e.NationalTeamId);
-        builder.HasOne(e => e.Coach).WithOne();
+        builder.HasOne(e => e.Coach).WithOne().HasForeignKey<Coach>(e => e.NationalTeamId);
 
     }
 }

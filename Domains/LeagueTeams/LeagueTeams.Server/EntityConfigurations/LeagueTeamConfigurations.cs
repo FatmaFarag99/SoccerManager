@@ -1,4 +1,7 @@
 namespace LeagueTeams.Server;
+
+using Coaches.Server;
+
 public class LeagueTeamConfigurations : BaseEntityConfiguration<LeagueTeam>
 {
     public override void Configure(EntityTypeBuilder<LeagueTeam> builder)
@@ -13,6 +16,7 @@ public class LeagueTeamConfigurations : BaseEntityConfiguration<LeagueTeam>
         builder.Property(e => e.Capacity).IsRequired();
 
         builder.HasMany(e => e.Players).WithOne().HasForeignKey(e => e.LeagueTeamId);
-        builder.HasOne(e => e.Coach).WithOne();
+        builder.HasOne(e => e.Coach).WithOne().HasForeignKey<Coach>(e => e.LeagueTeamId);
+        
     }
 }
