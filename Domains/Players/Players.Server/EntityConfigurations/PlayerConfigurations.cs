@@ -6,13 +6,11 @@ public class PlayerConfigurations : PersonConfiguration<Player>
         base.Configure(builder);
 
         builder.Property(e => e.CurrentNumber).IsRequired();
-        builder.Property(e => e.PlaceOfBirth).IsRequired();
-        builder.Property(e => e.BirthDate).IsRequired();
-        builder.Property(e => e.Hight).IsRequired();
+       // builder.Property(e => e.PlaceOfBirth).IsRequired();
+    //    builder.Property(e => e.BirthDate).IsRequired();
+      //  builder.Property(e => e.Hight).IsRequired();
         builder.Property(e => e.Weight).IsRequired();
-        builder.Property(e => e.Position).IsRequired();
-        builder.Property(e => e.Nationality).IsRequired();
+     //   builder.Property(e => e.Position).IsRequired();
 
-        builder.HasOne(e => e.Nationality).WithMany().HasForeignKey(e => e.NationalityId);
     }
 }

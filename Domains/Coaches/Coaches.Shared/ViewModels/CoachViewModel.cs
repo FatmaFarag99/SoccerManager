@@ -1,6 +1,6 @@
 namespace Coaches.Shared;
 public class CoachViewModel : PersonViewModel
 {
-    public Guid NationalityId { get; set; }
-    public NationalityViewModel Nationality { get; set; }
+    public Guid? LeagueTeamId { get; set; }
+    public Guid? NationalTeamId { get; set; }
 }

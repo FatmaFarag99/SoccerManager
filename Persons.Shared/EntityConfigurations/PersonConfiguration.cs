@@ -14,5 +14,9 @@ public abstract class PersonConfiguration<T> : BaseEntityConfiguration<T> where 
         builder.Property(e => e.BirthDate).IsRequired();
         builder.Property(e => e.Hight).IsRequired();
         builder.Property(e => e.Position).IsRequired();
+        builder.Property(e => e.Nationality).IsRequired();
+
+        builder.HasOne(e => e.Nationality).WithMany().HasForeignKey(e => e.NationalityId);
+
     }
 }

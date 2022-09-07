@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Common.csproj" />
+    <ProjectReference Include="..\..\Coaches\Coaches.Server\Coaches.Server.csproj" />
+    <ProjectReference Include="..\..\Players\Players.Server\Players.Server.csproj" />
     <ProjectReference Include="..\NationalTeams.Shared\NationalTeams.Shared.csproj" />
   </ItemGroup>
 

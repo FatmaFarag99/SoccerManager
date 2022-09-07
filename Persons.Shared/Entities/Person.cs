@@ -1,5 +1,8 @@
 ﻿namespace Persons.Shared;
-    public class Person : BaseEntity
+
+using Nationalities.Server;
+
+public class Person : BaseEntity
     {
     public string Name { get; set; }
     public string NickName { get; set; }
@@ -8,6 +11,8 @@
     public DateTime BirthDate { get; set; }
     public decimal Hight { get; set; }
     public string Position { get; set; }
+    public Guid NationalityId { get; set; }
+    public Nationality Nationality { get; set; }
 
     // public string CurrentTeam { get; set; }
 }

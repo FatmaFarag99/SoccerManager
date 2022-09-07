@@ -1,4 +1,8 @@
 namespace NationalTeams.Server;
+
+using Coaches.Server;
+using Players.Server;
+
 public class NationalTeam : BaseEntity
 {
     public string Name { get; set; }
@@ -8,8 +12,9 @@ public class NationalTeam : BaseEntity
     public string Confedration { get; set; }
     public string MostCaps { get; set; }
 
-    //  public List<Player> Players { get; set; }
-    // public Guid CoachId { get; set; }
-    // public Guid CaptainId { get; set; }
-    // public Guid TopScorerId { get; set; }
+     public List<Player> Players { get; set; }
+    public Guid CoachId { get; set; }
+    public Coach Coach { get; set; }
+    public Guid CaptainId { get; set; }
+    public Guid TopScorerId { get; set; }
 }

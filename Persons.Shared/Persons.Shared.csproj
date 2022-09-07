@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\Domains\Nationalities\Nationalities.Server\Nationalities.Server.csproj" />
+    <ProjectReference Include="..\Domains\Nationalities\Nationalities.Shared\Nationalities.Shared.csproj" />
   </ItemGroup>
 
 </Project>

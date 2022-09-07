@@ -9,5 +9,9 @@ public class NationalTeamConfigurations : BaseEntityConfiguration<NationalTeam>
         builder.Property(e => e.FifaCode).IsRequired();
         builder.Property(e => e.MostCaps).IsRequired();
         builder.Property(e => e.Association).IsRequired();
+
+        builder.HasMany(e => e.Players).WithOne().HasForeignKey(e => e.NationalTeamId);
+        builder.HasOne(e => e.Coach).WithOne();
+
     }
 }

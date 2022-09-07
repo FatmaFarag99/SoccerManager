@@ -1,4 +1,8 @@
 namespace NationalTeams.Shared;
+
+using Coaches.Shared;
+using Players.Shared;
+
 public class NationalTeamViewModel : BaseViewModel
 {
     public string Name { get; set; }
@@ -7,9 +11,10 @@ public class NationalTeamViewModel : BaseViewModel
     public string Association { get; set; }
     public string Confedration { get; set; }
     public string MostCaps { get; set; }
-    
-    //  public List<PlayerViewModel> Players { get; set; }
-    // public Guid CoachId { get; set; }
-    // public Guid CaptainId { get; set; }
-    // public Guid TopScorerId { get; set; }
+
+    public List<PlayerViewModel> Players { get; set; }
+    public Guid CoachId { get; set; }
+    public CoachViewModel Coach { get; set; }
+    public Guid CaptainId { get; set; }
+    public Guid TopScorerId { get; set; }
 }

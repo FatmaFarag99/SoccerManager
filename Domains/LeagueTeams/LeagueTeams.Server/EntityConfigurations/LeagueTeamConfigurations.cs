@@ -11,5 +11,8 @@ public class LeagueTeamConfigurations : BaseEntityConfiguration<LeagueTeam>
         builder.Property(e => e.President).IsRequired();
         builder.Property(e => e.HomeStadium).IsRequired();
         builder.Property(e => e.Capacity).IsRequired();
+
+        builder.HasMany(e => e.Players).WithOne().HasForeignKey(e => e.LeagueTeamId);
+        builder.HasOne(e => e.Coach).WithOne();
     }
 }

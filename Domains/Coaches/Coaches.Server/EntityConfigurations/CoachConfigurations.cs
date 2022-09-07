@@ -5,7 +5,5 @@ public class CoachConfigurations : PersonConfiguration<Coach>
     {
         base.Configure(builder);
 
-        builder.Property(e => e.Nationality).IsRequired();
-        builder.HasOne(e => e.Nationality).WithMany().HasForeignKey(e => e.NationalityId);
     }
 }

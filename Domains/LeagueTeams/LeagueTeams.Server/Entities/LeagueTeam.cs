@@ -1,4 +1,8 @@
 namespace LeagueTeams.Server;
+
+using Coaches.Server;
+using Players.Server;
+
 public class LeagueTeam : BaseEntity
 {
     public string Name { get; set; }
@@ -8,7 +12,8 @@ public class LeagueTeam : BaseEntity
     public string HomeStadium { get; set; }
     public int Capacity { get; set; }
     public DateTime Founded { get; set; }
-    //  public List<Player> Players { get; set; }
-    // public Guid CoachId { get; set; }
-    // public Guid CaptainId { get; set; }
+    public List<Player> Players { get; set; }
+    public Guid CoachId { get; set; }
+    public Coach Coach { get; set; }
+    public Guid CaptainId { get; set; }
 }
