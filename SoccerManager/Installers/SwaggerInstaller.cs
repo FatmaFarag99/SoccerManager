@@ -14,8 +14,8 @@
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "ResumeCreator",
-                    Description = "The Best Resume Maker Online."
+                    Title = "Soccer Manager",
+                    Description = "The Best Soccer Manager Online."
                 });
 
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
