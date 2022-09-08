@@ -37,7 +37,7 @@ namespace Common
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] TViewModel productViewModel)
+        public virtual async Task<IActionResult> Post([FromBody] TViewModel productViewModel)
         {
             ValidationResult validationResult = await _validator.ValidateAsync(productViewModel);
             if (!validationResult.IsValid)
@@ -49,7 +49,7 @@ namespace Common
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] TViewModel productViewModel)
+        public virtual async Task<IActionResult> Put([FromBody] TViewModel productViewModel)
         {
             ValidationResult validationResult = await _validator.ValidateAsync(productViewModel);
             if (!validationResult.IsValid)
@@ -61,7 +61,7 @@ namespace Common
         }
 
         [HttpDelete("{id}")]
-        public async Task Delete(Guid id)
+        public virtual async Task Delete(Guid id)
         {
             await _unitOfWork.DeleteAsync(id);
         }
