@@ -1,12 +1,11 @@
 ﻿namespace SoccerManager.Installers
 {
-    using Common;
-    using Microsoft.AspNetCore.Builder;
+    using Common.AssemplyScanning;
     using Microsoft.OpenApi.Models;
 
-    public class SwaggerInstaller : Installer
+    public class SwaggerInstaller : IInstaller
     {
-        public override void Install(IServiceCollection services, IConfiguration configuration)
+        public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(options =>
@@ -42,12 +41,6 @@
                     }
                 });
             });
-        }
-
-        public static new async Task Use(WebApplication application)
-        {
-            application.UseSwagger();
-            application.UseSwaggerUI();
         }
     }
 }

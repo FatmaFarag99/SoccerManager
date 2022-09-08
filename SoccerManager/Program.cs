@@ -69,7 +69,7 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly,
 
 
 // Add services to the container.
-
+builder.Services.AddInstallerFromAssembly<Program>(builder.Configuration);
 builder.Services.AddInstallerFromReferancedAssemblies(builder.Configuration, typeof(Program).Assembly, "*.Server.dll");
 
 builder.Services.AddControllers();

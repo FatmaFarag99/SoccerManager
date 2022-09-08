@@ -8,4 +8,5 @@ public class PlayersController : BaseController<Player, PlayerViewModel>
         : base(unitOfWork, mapper, validator)
     {
     }
+
 }
