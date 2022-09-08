@@ -63,7 +63,7 @@ namespace SoccerManager.Migrations
                     CoachId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CaptainId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
-                    ConcurrencyStamp = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
+                    ConcurrencyStamp = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -77,7 +77,7 @@ namespace SoccerManager.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
-                    ConcurrencyStamp = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
+                    ConcurrencyStamp = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -99,7 +99,7 @@ namespace SoccerManager.Migrations
                     CaptainId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TopScorerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
-                    ConcurrencyStamp = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
+                    ConcurrencyStamp = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -217,10 +217,8 @@ namespace SoccerManager.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LeagueTeamId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    NationalTeamId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
-                    ConcurrencyStamp = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false),
+                    ConcurrencyStamp = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NickName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
@@ -228,7 +226,9 @@ namespace SoccerManager.Migrations
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Hight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Position = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NationalityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    NationalityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LeagueTeamId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NationalTeamId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -237,7 +237,8 @@ namespace SoccerManager.Migrations
                         name: "FK_Coach_LeagueTeam_LeagueTeamId",
                         column: x => x.LeagueTeamId,
                         principalTable: "LeagueTeam",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Coach_Nationality_NationalityId",
                         column: x => x.NationalityId,
@@ -248,7 +249,8 @@ namespace SoccerManager.Migrations
                         name: "FK_Coach_NationalTeam_NationalTeamId",
                         column: x => x.NationalTeamId,
                         principalTable: "NationalTeam",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -258,10 +260,8 @@ namespace SoccerManager.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Weight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CurrentNumber = table.Column<int>(type: "int", nullable: false),
-                    LeagueTeamId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NationalTeamId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
-                    ConcurrencyStamp = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false),
+                    ConcurrencyStamp = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NickName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
@@ -269,7 +269,9 @@ namespace SoccerManager.Migrations
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Hight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Position = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NationalityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    NationalityId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LeagueTeamId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NationalTeamId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -337,8 +339,7 @@ namespace SoccerManager.Migrations
                 name: "IX_Coach_LeagueTeamId",
                 table: "Coach",
                 column: "LeagueTeamId",
-                unique: true,
-                filter: "[LeagueTeamId] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Coach_NationalityId",
@@ -349,8 +350,7 @@ namespace SoccerManager.Migrations
                 name: "IX_Coach_NationalTeamId",
                 table: "Coach",
                 column: "NationalTeamId",
-                unique: true,
-                filter: "[NationalTeamId] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Player_LeagueTeamId",

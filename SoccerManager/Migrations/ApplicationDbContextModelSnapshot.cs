@@ -36,7 +36,6 @@ namespace SoccerManager.Migrations
 
                     b.Property<byte[]>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
@@ -48,14 +47,14 @@ namespace SoccerManager.Migrations
                     b.Property<decimal>("Hight")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid?>("LeagueTeamId")
+                    b.Property<Guid>("LeagueTeamId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("NationalTeamId")
+                    b.Property<Guid>("NationalTeamId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("NationalityId")
@@ -76,12 +75,10 @@ namespace SoccerManager.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("LeagueTeamId")
-                        .IsUnique()
-                        .HasFilter("[LeagueTeamId] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("NationalTeamId")
-                        .IsUnique()
-                        .HasFilter("[NationalTeamId] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("NationalityId");
 
@@ -105,7 +102,6 @@ namespace SoccerManager.Migrations
 
                     b.Property<byte[]>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
@@ -348,7 +344,6 @@ namespace SoccerManager.Migrations
 
                     b.Property<byte[]>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
@@ -384,7 +379,6 @@ namespace SoccerManager.Migrations
 
                     b.Property<byte[]>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
@@ -434,7 +428,6 @@ namespace SoccerManager.Migrations
 
                     b.Property<byte[]>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
@@ -492,11 +485,15 @@ namespace SoccerManager.Migrations
                 {
                     b.HasOne("LeagueTeams.Server.LeagueTeam", null)
                         .WithOne("Coach")
-                        .HasForeignKey("Coaches.Server.Coach", "LeagueTeamId");
+                        .HasForeignKey("Coaches.Server.Coach", "LeagueTeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("NationalTeams.Server.NationalTeam", null)
                         .WithOne("Coach")
-                        .HasForeignKey("Coaches.Server.Coach", "NationalTeamId");
+                        .HasForeignKey("Coaches.Server.Coach", "NationalTeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Nationalities.Server.Nationality", "Nationality")
                         .WithMany()
