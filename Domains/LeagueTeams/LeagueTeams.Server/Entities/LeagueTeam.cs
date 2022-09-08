@@ -1,8 +1,4 @@
 namespace LeagueTeams.Server;
-
-using Coaches.Server;
-using Players.Server;
-
 public class LeagueTeam : BaseEntity
 {
     public string Name { get; set; }

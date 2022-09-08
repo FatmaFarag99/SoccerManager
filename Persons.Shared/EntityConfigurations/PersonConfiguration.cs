@@ -1,7 +1,4 @@
 ﻿namespace Persons.Shared;
-
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
 public abstract class PersonConfiguration<T> : BaseEntityConfiguration<T> where T : Person
 {
     public override void Configure(EntityTypeBuilder<T> builder)
@@ -14,6 +11,7 @@ public abstract class PersonConfiguration<T> : BaseEntityConfiguration<T> where 
         builder.Property(e => e.BirthDate).IsRequired();
         builder.Property(e => e.Hight).IsRequired();
         builder.Property(e => e.Position).IsRequired();
+        builder.Property(e => e.NationalityId).IsRequired();
 
         builder.HasOne(e => e.Nationality).WithMany().HasForeignKey(e => e.NationalityId);
 

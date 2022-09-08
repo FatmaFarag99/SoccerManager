@@ -1,7 +1,4 @@
 namespace LeagueTeams.Server;
-
-using Coaches.Server;
-
 public class LeagueTeamConfigurations : BaseEntityConfiguration<LeagueTeam>
 {
     public override void Configure(EntityTypeBuilder<LeagueTeam> builder)

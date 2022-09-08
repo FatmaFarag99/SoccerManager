@@ -1,7 +1,4 @@
 ﻿namespace Persons.Shared;
-
-using Nationalities.Shared;
-
 public class PersonViewModel : BaseViewModel
     {
     public string Name { get; set; }
@@ -13,5 +10,6 @@ public class PersonViewModel : BaseViewModel
     public string Position { get; set; }
     public Guid NationalityId { get; set; }
     public NationalityViewModel Nationality { get; set; }
-    // public string CurrentTeam { get; set; }
+    public Guid LeagueTeamId { get; set; }
+    public Guid NationalTeamId { get; set; }
 }

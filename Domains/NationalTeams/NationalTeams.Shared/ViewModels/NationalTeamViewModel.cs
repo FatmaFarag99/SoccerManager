@@ -1,8 +1,4 @@
 namespace NationalTeams.Shared;
-
-using Coaches.Shared;
-using Players.Shared;
-
 public class NationalTeamViewModel : BaseViewModel
 {
     public string Name { get; set; }

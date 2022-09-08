@@ -1,7 +1,4 @@
 ﻿namespace Persons.Shared;
-
-using Nationalities.Server;
-
 public class Person : BaseEntity
     {
     public string Name { get; set; }
@@ -13,6 +10,7 @@ public class Person : BaseEntity
     public string Position { get; set; }
     public Guid NationalityId { get; set; }
     public Nationality Nationality { get; set; }
+    public Guid LeagueTeamId { get; set; }
+    public Guid NationalTeamId { get; set; }
 
-    // public string CurrentTeam { get; set; }
 }

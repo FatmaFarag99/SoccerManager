@@ -11,5 +11,6 @@ public abstract class PersonValidator<T> : AbstractValidator<T>
         RuleFor(x => x.PlaceOfBirth).NotEmpty();
         RuleFor(x => x.Hight).NotEmpty();
         RuleFor(x => x.Position).NotEmpty();
+        RuleFor(x => x.NationalityId).NotEmpty();
     }
 }

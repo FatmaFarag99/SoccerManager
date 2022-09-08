@@ -1,8 +1,4 @@
 namespace NationalTeams.Server;
-
-using Coaches.Server;
-using Players.Server;
-
 public class NationalTeam : BaseEntity
 {
     public string Name { get; set; }

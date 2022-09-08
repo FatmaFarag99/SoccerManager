@@ -1,6 +1,4 @@
 namespace NationalTeams.Server;
-using Coaches.Server;
-
 public class NationalTeamConfigurations : BaseEntityConfiguration<NationalTeam>
 {
     public override void Configure(EntityTypeBuilder<NationalTeam> builder)

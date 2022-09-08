@@ -7,3 +7,5 @@ global using FluentValidation;
 global using Microsoft.AspNetCore.Mvc;
 global using Nationalities.Server;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
